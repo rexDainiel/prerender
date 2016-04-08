@@ -26,11 +26,11 @@ ENV BASIC_AUTH_PASSWORD foobar
 
 RUN apt-get update \
   && apt-get install -y dnsutils \
-  && rm -rf /var/lib/apt/lists/* \
-  && NEWLINE=$'\n' \
-  && HOST_IP="`nslookup frontend.keylol.com | awk -F': ' 'NR==6 { print $2 }'`" \
-  && echo "${NEWLINE}${HOST_IP} www.keylol.com" >> /etc/hosts
+  && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 3000
 VOLUME /prerender-file-cache
-CMD node server.js
+CMD NEWLINE=$'\n' \
+  && HOST_IP="`nslookup frontend.keylol.com | awk -F': ' 'NR==6 { print $2 }'`" \
+  && echo "${NEWLINE}${HOST_IP} www.keylol.com" >> /etc/hosts \
+  && node server.js
