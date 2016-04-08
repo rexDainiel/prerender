@@ -29,7 +29,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/* \
   && NEWLINE=$'\n' \
   && HOST_IP="`nslookup frontend.keylol.com | awk -F': ' 'NR==6 { print $2 }'`" \
-  && "${NEWLINE}${HOST_IP} www.keylol.com" >> /etc/hosts
+  && echo "${NEWLINE}${HOST_IP} www.keylol.com" >> /etc/hosts
 
 EXPOSE 3000
 VOLUME /prerender-file-cache
