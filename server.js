@@ -8,12 +8,13 @@ var server = prerender({
 
 
 server.use(prerender.sendPrerenderHeader());
-// server.use(prerender.basicAuth());
+server.use(prerender.basicAuth());
 // server.use(prerender.whitelist());
-server.use(prerender.blacklist());
+// server.use(prerender.blacklist());
 // server.use(prerender.logger());
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
+server.use(require('prerender-file-cache'));
 // server.use(prerender.inMemoryHtmlCache());
 // server.use(prerender.s3HtmlCache());
 
