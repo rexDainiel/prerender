@@ -25,7 +25,7 @@ ENV BASIC_AUTH_USERNAME keylol
 ENV BASIC_AUTH_PASSWORD foobar
 
 RUN apt-get update \
-  && apt-get install -y apt-get install dnsutils \
+  && apt-get install -y dnsutils \
   && rm -rf /var/lib/apt/lists/* \
   && NEWLINE=$'\n' \
   && HOST_IP="`nslookup frontend.keylol.com | awk -F': ' 'NR==6 { print $2 }'`" \
