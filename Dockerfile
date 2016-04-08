@@ -24,11 +24,11 @@ ENV BASIC_AUTH_USERNAME keylol
 # Prerender basicAuth 默认密码
 ENV BASIC_AUTH_PASSWORD foobar
 
-RUN apt-get update
-  && apt-get install -y net-tools
-  && rm -rf /var/lib/apt/lists/*
-  && NEWLINE=$'\n'
-  && HOST_IP="`netstat -nr | grep '^0\.0\.0\.0' | awk '{print $2}'`"
+RUN apt-get update \
+  && apt-get install -y apt-get install dnsutils \
+  && rm -rf /var/lib/apt/lists/* \
+  && NEWLINE=$'\n' \
+  && HOST_IP="`nslookup frontend.keylol.com | awk -F': ' 'NR==6 { print $2 }'`" \
   && "${NEWLINE}${HOST_IP} www.keylol.com" >> /etc/hosts
 
 EXPOSE 3000
