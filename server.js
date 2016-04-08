@@ -14,7 +14,7 @@ server.use(prerender.basicAuth());
 // server.use(prerender.logger());
 server.use(prerender.removeScriptTags());
 server.use(prerender.httpHeaders());
-server.use(require('prerender-file-cache'));
+server.use(prerender.fileCache());
 // server.use(prerender.inMemoryHtmlCache());
 // server.use(prerender.s3HtmlCache());
 

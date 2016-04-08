@@ -13,10 +13,10 @@ COPY server.js ./
 ENV PORT 3000
 
 # Prerender 文件缓存位置
-ENV CACHE_ROOT_DIR /prerender-file-cache
+ENV CACHE_DIR /prerender-file-cache
 
 # Prerender 文件缓存有效期
-ENV CACHE_LIVE_TIME 86400
+ENV CACHE_TTL 86400
 
 # Prerender basicAuth 默认用户名
 ENV BASIC_AUTH_USERNAME keylol
