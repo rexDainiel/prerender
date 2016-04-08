@@ -24,13 +24,9 @@ ENV BASIC_AUTH_USERNAME keylol
 # Prerender basicAuth 默认密码
 ENV BASIC_AUTH_PASSWORD foobar
 
-RUN apt-get update \
-  && apt-get install -y dnsutils \
-  && rm -rf /var/lib/apt/lists/*
-
 EXPOSE 3000
 VOLUME /prerender-file-cache
 CMD NEWLINE=$'\n' \
-  && HOST_IP="`nslookup frontend.keylol.com | awk -F': ' 'NR==6 { print $2 }'`" \
+  && HOST_IP="`getent hosts frontend.keylol.com | awk '{ print $1 }'`" \
   && echo "${NEWLINE}${HOST_IP} www.keylol.com" >> /etc/hosts \
   && node server.js
