@@ -1,4 +1,4 @@
-FROM node:6.2.0
+FROM node:4.4.5
 MAINTAINER Zen Day <zenday@keylol.com>
 
 ENV NPM_CONFIG_LOGLEVEL warn
